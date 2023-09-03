@@ -15,8 +15,9 @@ public class Task1 {
         int counterNumberOne = 0;
         int n = scanner.nextInt();
         int[] mas = new int[n];
+
         for (int i = 0; i < mas.length; i++) {
-            mas[i] = random.nextInt(11);
+            mas[i] = random.nextInt(10);
         }
 
         for (int arr : mas) {

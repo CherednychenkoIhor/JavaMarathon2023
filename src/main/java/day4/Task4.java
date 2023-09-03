@@ -16,7 +16,7 @@ public class Task4 {
         int maxSumIdx = 0;
         for (int i = 0; i < mas.length - 2; i++) {
             int sum = 0;
-            for (int j = 0; j < i + 3; j++) {
+            for (int j = i; j < i + 3; j++) {
                 sum += mas[j];
             }
             if (sum > maxSum){

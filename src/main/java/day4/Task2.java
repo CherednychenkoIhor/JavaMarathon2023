@@ -7,7 +7,7 @@ public class Task2 {
     public static void main(String[] args) {
         Random random = new Random();
         int[] mas = new int[100];
-        int largestArrayElement;
+        int largestArrayElement = 0;
         int smallestArrayElement;
         int countLastZeroElement = 0;
         int sumLastZeroElement = 0;
@@ -17,7 +17,6 @@ public class Task2 {
             mas[i] = random.nextInt(10000);
         }
 
-        largestArrayElement = mas[0];
         smallestArrayElement = mas[0];
 
         for (int arr : mas) {
@@ -25,12 +24,13 @@ public class Task2 {
                 largestArrayElement = arr;
             } else if (arr < smallestArrayElement) {
                 smallestArrayElement = arr;
-            } else if (arr % 10 == 0 || arr % 100 == 0 || arr % 1000 == 0) {
+            } else if (arr % 10 == 0) {
                 testMass[countLastZeroElement] = arr;
                 sumLastZeroElement += arr;
                 countLastZeroElement++;
             }
         }
+
         System.out.println(Arrays.toString(mas));
         System.out.println("Наибольший элемент массива: " + largestArrayElement);
         System.out.println("Наименьший элемент массива: " + smallestArrayElement);

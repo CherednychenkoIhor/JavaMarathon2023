@@ -18,7 +18,7 @@ public class Task3 {
                 sumMax += matrix[i][j];
                 System.out.print(matrix[i][j] + " ");
             }
-            if (sumMax > maxElem) {
+            if (sumMax >= maxElem) {
                 maxElem = sumMax;
                 stringIndex = i;
             }

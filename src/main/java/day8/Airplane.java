@@ -35,6 +35,7 @@ public class Airplane {
         this.fuel += fuel;
     }
 
+    @Override
     public String toString() {
        return "Изготовитель: " + this.producer + ", год выпуска: " + this.year + ", длина: " + this.length + ", вес: " + this.weight + ", количество топлива в баке: " + this.fuel;
     }

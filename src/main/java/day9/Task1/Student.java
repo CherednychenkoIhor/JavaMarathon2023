@@ -8,7 +8,7 @@ public class Student extends Human {
         this.nameStudyGroup = nameStudyGroup;
     }
 
-    public String getNameStudyGroup() {
+    public String getGroupName() {
         return nameStudyGroup;
     }
 

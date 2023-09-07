@@ -8,7 +8,7 @@ public class Teacher extends Human {
         this.nameSubject = nameSubject;
     }
 
-    public String getNameSubject() {
+    public String getSubjectName() {
         return nameSubject;
     }
 

@@ -22,6 +22,5 @@ public class Task4 {
 
         band1.printMembers();
         band2.printMembers();
-
     }
 }

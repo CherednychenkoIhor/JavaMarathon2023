@@ -199,34 +199,100 @@ public class Ships extends GameField {
                         gameField[check[1]][check[3]].equals("\uD83D\uDFE6") || gameField[check[1]][check[3]].equals(" \uD83D\uDEE5")) {
                     throw new IllegalArgumentException();
                 }
+
+
                 gameField[check[0]][check[2]] = "\uD83D\uDEE5";
                 gameField[check[1]][check[3]] = "\uD83D\uDEE5";
-                printFilled();
 
-                for (int i = 0; i < gameField.length; i++) {
-                    for (int j = 0; j < gameField.length; j++) {
-                        if (gameField[i][j].equals("\uD83D\uDEE5") &&
-                                gameField[i][j + 1].equals("\uD83D\uDEE5")) {
-                            gameField[check[0]][check[2]] = "\uD83D\uDEE5";
-                            gameField[check[1]][check[3]] = "\uD83D\uDEE5";
-                        } else if (gameField[i][j].equals("\uD83D\uDEE5") &&
-                                gameField[i + 1][j].equals("\uD83D\uDEE5")) {
-                            gameField[check[0]][check[2]] = "\uD83D\uDEE5";
-                            gameField[check[1]][check[3]] = "\uD83D\uDEE5";
-                        } else if (gameField[i][j].equals("\uD83D\uDEE5") &&
-                                gameField[i - 1][j].equals("\uD83D\uDEE5")) {
-                            gameField[check[0]][check[2]] = "\uD83D\uDEE5";
-                            gameField[check[1]][check[3]] = "\uD83D\uDEE5";
-                        } else if (gameField[i][j].equals("\uD83D\uDEE5") &&
-                                gameField[i][j - 1].equals("\uD83D\uDEE5")) {
-                            gameField[check[0]][check[2]] = "\uD83D\uDEE5";
-                            gameField[check[1]][check[3]] = "\uD83D\uDEE5";
-                        } else {
-                            throw new ArithmeticException();
-                        }
-                    }
+                if (check[0] == 0 && check[2] == 0 && check[1] == 1 && check[3] == 1) {
+                    gameField[check[0]][check[2]] = " ⬜";
+                    gameField[check[1]][check[3]] = " ⬜";
+                    throw new ArithmeticException();
                 }
+                if (gameField[check[1]][check[3]].equals(gameField[check[0]][check[2] + 1])) {
+                    getOrealSecondDeck();
+                    printFilled();
+                } else if (gameField[check[1]][check[3]].equals(gameField[check[0] + 1][check[2]])) {
+                    getOrealSecondDeck();
+                    printFilled();
+                } else if (gameField[check[1]][check[3]].equals(gameField[check[0] - 1][check[2]])) {
+                    getOrealSecondDeck();
+                    printFilled();
+                } else if (gameField[check[1]][check[3]].equals(gameField[check[0]][check[2] - 1])) {
+                    getOrealSecondDeck();
+                    printFilled();
+                } else {
+                    gameField[check[0]][check[2]] = " ⬜";
+                    gameField[check[1]][check[3]] = " ⬜";
+                    throw new ArithmeticException();
+                }
+                // 1,2 -> 1,3, 2,2, 0,2, 1,1 -- correct
 
+//                if (gameField[check[0]][check[2]].equals("\uD83D\uDEE5") &&
+//                        gameField[check[1]][check[3] + 1].equals("\uD83D\uDEE5")) {
+//                    gameField[check[0]][check[2]] = "\uD83D\uDEE5";
+//                    gameField[check[1]][check[3]] = "\uD83D\uDEE5";
+//                } else if (gameField[i][j].equals("\uD83D\uDEE5") &&
+//                        gameField[i + 1][j].equals("\uD83D\uDEE5")) {
+//                    gameField[check[0]][check[2]] = "\uD83D\uDEE5";
+//                    gameField[check[1]][check[3]] = "\uD83D\uDEE5";
+//                } else if (gameField[0][0].equals("\uD83D\uDEE5") &&
+//                        gameField[1][1].equals("\uD83D\uDEE5")) {
+//                    throw new ArithmeticException();
+//                } else if (gameField[i][j].equals("\uD83D\uDEE5") &&
+//                        gameField[i][j - 1].equals("\uD83D\uDEE5")) {
+//                    gameField[check[0]][check[2]] = "\uD83D\uDEE5";
+//                    gameField[check[1]][check[3]] = "\uD83D\uDEE5";
+//                } else if (gameField[i][j].equals("\uD83D\uDEE5") && i != 0 &&
+//                        gameField[i - 1][j].equals("\uD83D\uDEE5")) {
+//                    gameField[check[0]][check[2]] = "\uD83D\uDEE5";
+//                    gameField[check[1]][check[3]] = "\uD83D\uDEE5";
+//                } else {
+//                    System.out.println("err");
+//                    printFilled();
+//                    throw new ArithmeticException();
+//                }
+
+//                for (int i = 0; i < gameField.length; i++) {
+//                    for (int j = 0; j < gameField.length; j++) {
+//                        if (gameField[i][j].equals("\uD83D\uDEE5") && i == j && i != 0) {
+//                            gameField[check[0]][check[2]] = "\uD83D\uDFE6";
+//                            gameField[check[1]][check[3]] = "\uD83D\uDFE6";
+//                            throw new ArithmeticException();
+//                        }
+//                    }
+//                }
+
+//                for (int i = 0; i < gameField.length; i++) {
+//                    for (int j = 0; j < gameField.length; j++) {
+//                        if (gameField[i][j].equals("\uD83D\uDEE5") &&
+//                                gameField[i][j + 1].equals("\uD83D\uDEE5")) {
+//                            gameField[check[0]][check[2]] = "\uD83D\uDEE5";
+//                            gameField[check[1]][check[3]] = "\uD83D\uDEE5";
+//                        } else if (gameField[i][j].equals("\uD83D\uDEE5") &&
+//                                gameField[i + 1][j].equals("\uD83D\uDEE5")) {
+//                            gameField[check[0]][check[2]] = "\uD83D\uDEE5";
+//                            gameField[check[1]][check[3]] = "\uD83D\uDEE5";
+//                        } else if (gameField[0][0].equals("\uD83D\uDEE5") &&
+//                                gameField[1][1].equals("\uD83D\uDEE5")) {
+//                            throw new ArithmeticException();
+//                        } else if (gameField[i][j].equals("\uD83D\uDEE5") &&
+//                                gameField[i][j - 1].equals("\uD83D\uDEE5")) {
+//                            gameField[check[0]][check[2]] = "\uD83D\uDEE5";
+//                            gameField[check[1]][check[3]] = "\uD83D\uDEE5";
+//                        } else if (gameField[i][j].equals("\uD83D\uDEE5") && i != 0 &&
+//                                gameField[i - 1][j].equals("\uD83D\uDEE5")) {
+//                            gameField[check[0]][check[2]] = "\uD83D\uDEE5";
+//                            gameField[check[1]][check[3]] = "\uD83D\uDEE5";
+//                        } else {
+//                            System.out.println("err");
+//                            printFilled();
+//                            throw new ArithmeticException();
+//                        }
+//                    }
+//                }
+//                getOrealSecondDeck();
+//                printFilled();
 
 //                if (check[1] == check[0] - 1 && check[3] == check[2]) {
 //                    gameField[check[0]][check[2]] = "\uD83D\uDEE5";
@@ -247,7 +313,6 @@ public class Ships extends GameField {
 //                    throw new ArithmeticException();
 //                }
 
-                getOrealSecondDeck();
 //                getOrealDeck(check[0], check[2], check[1], check[3]);
 
 
@@ -256,17 +321,19 @@ public class Ships extends GameField {
 //                counter--;
 //                System.out.println("Смотри формат ввода координат! (Формат: x,y)");
 //            }
-            catch (IllegalArgumentException e) {
+            catch (
+                    IllegalArgumentException e) {
                 counter--;
                 System.out.println("Вокруг корабля должна быть область шириной в одну клетку, " +
                         "в которой не может быть других кораблей (ореол корабля)");
-            } catch (ArithmeticException e) {
+            } catch (
+                    ArithmeticException e) {
                 counter--;
                 System.out.println("несколько координат, разбросанных по карте - это невалидный корабль.");
             }
         }
-        // 0,0 5,5 9,9 4,6
-        //TODO 🛥
+// 0,0 5,5 9,9 4,6
+//TODO 🛥
     }
 
     public static void getOrealDeck(int x, int y, int z, int c) {

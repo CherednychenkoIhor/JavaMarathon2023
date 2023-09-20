@@ -11,7 +11,8 @@ public class Battleship {
         System.out.println("Начнем расставлять корабли на поле "+ player1.getName() + ". Другой игрок, не смотри!");
 
 //        GameField.printFilled();
-        Ships.addDeckTwo();
+        Ships.addDeckThree();
+//        Ships.addDeckTwo();
 //        Ships.addDeckOne();
 //        System.out.print("Введите имя второго игрока: ");
 //        Player player2 = new Player(scanner.nextLine());

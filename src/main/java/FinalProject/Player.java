@@ -13,7 +13,6 @@ public class Player extends GameField {
 
     public Player(String name) {
         this.name = name;
-        filledField();
     }
 }
 

@@ -7,14 +7,10 @@ public class Ships extends GameField {
     public static void placeShips(String[][] battlefield) {
         filledField(battlefield);
         printFilled(battlefield);
-        addDeckOne(battlefield);
-        addDeckTwo(battlefield); // problem with 9,9, 0,0
-//        getOrealSecondDeck(battlefield);
-        addDeckThree(battlefield); // array problem
-//        getOrealThirdDeck(battlefield);
-        addDeckFourth(battlefield);
-//        getOrealFourthDeck(battlefield);
-
+//        addDeckOne(battlefield);
+        addDeckTwo(battlefield); // 1,8;1,9
+        addDeckThree(battlefield); // 2,0;2,1 && 1,8;1,9
+        addDeckFourth(battlefield); // 2,0;2,1 && 1,8;1,9
     }
 
     public static void addDeckOne(String[][] gameField) {
@@ -65,46 +61,46 @@ public class Ships extends GameField {
                     gameField[0][8] = "\uD83D\uDFE6";
                     gameField[1][8] = "\uD83D\uDFE6";
                     gameField[1][9] = "\uD83D\uDFE6";
-                }
-                for (int i = 1; i < gameField.length; i++) {
-                    for (int j = 1; j < gameField.length; j++) {
-                        if (gameField[0][j].equals("\uD83D\uDEE5") && j != 9) {
-                            gameField[0][j + 1] = "\uD83D\uDFE6";
-                            gameField[0][j - 1] = "\uD83D\uDFE6";
-                            gameField[1][j] = "\uD83D\uDFE6";
-                            gameField[1][j + 1] = "\uD83D\uDFE6";
-                            gameField[1][j - 1] = "\uD83D\uDFE6";
-                        } else if (gameField[i][j].equals("\uD83D\uDEE5") && i > 0 && i < 9 && j > 0 && j < 9) {
-                            gameField[i][j + 1] = "\uD83D\uDFE6";
-                            gameField[i][j - 1] = "\uD83D\uDFE6";
-                            gameField[i + 1][j - 1] = "\uD83D\uDFE6";
-                            gameField[i + 1][j] = "\uD83D\uDFE6";
-                            gameField[i + 1][j + 1] = "\uD83D\uDFE6";
-                            gameField[i - 1][j - 1] = "\uD83D\uDFE6";
-                            gameField[i - 1][j] = "\uD83D\uDFE6";
-                            gameField[i - 1][j + 1] = "\uD83D\uDFE6";
-                        } else if (gameField[i][j].equals("\uD83D\uDEE5") && i == 9 && j != 0 && j < 9) {
-                            gameField[i][j + 1] = "\uD83D\uDFE6";
-                            gameField[i][j - 1] = "\uD83D\uDFE6";
-                            gameField[i - 1][j - 1] = "\uD83D\uDFE6";
-                            gameField[i - 1][j] = "\uD83D\uDFE6";
-                            gameField[i - 1][j + 1] = "\uD83D\uDFE6";
-                        } else if (gameField[i][0].equals("\uD83D\uDEE5") && i > 0 && i < 9) {
-                            gameField[i][1] = "\uD83D\uDFE6";
-                            gameField[i + 1][0] = "\uD83D\uDFE6";
-                            gameField[i + 1][1] = "\uD83D\uDFE6";
-                            gameField[i - 1][0] = "\uD83D\uDFE6";
-                            gameField[i - 1][1] = "\uD83D\uDFE6";
-                        } else if (gameField[i][j].equals("\uD83D\uDEE5") && j == 9 && i != 0 && i < 9) {
-                            gameField[i][j - 1] = "\uD83D\uDFE6";
-                            gameField[i + 1][j - 1] = "\uD83D\uDFE6";
-                            gameField[i + 1][j] = "\uD83D\uDFE6";
-                            gameField[i - 1][j - 1] = "\uD83D\uDFE6";
-                            gameField[i - 1][j] = "\uD83D\uDFE6";
+                } else {
+                    for (int i = 1; i < gameField.length; i++) {
+                        for (int j = 1; j < gameField.length; j++) {
+                            if (gameField[0][j].equals("\uD83D\uDEE5") && j != 9) {
+                                gameField[0][j + 1] = "\uD83D\uDFE6";
+                                gameField[0][j - 1] = "\uD83D\uDFE6";
+                                gameField[1][j] = "\uD83D\uDFE6";
+                                gameField[1][j + 1] = "\uD83D\uDFE6";
+                                gameField[1][j - 1] = "\uD83D\uDFE6";
+                            } else if (gameField[i][j].equals("\uD83D\uDEE5") && i > 0 && i < 9 && j > 0 && j < 9) {
+                                gameField[i][j + 1] = "\uD83D\uDFE6";
+                                gameField[i][j - 1] = "\uD83D\uDFE6";
+                                gameField[i + 1][j - 1] = "\uD83D\uDFE6";
+                                gameField[i + 1][j] = "\uD83D\uDFE6";
+                                gameField[i + 1][j + 1] = "\uD83D\uDFE6";
+                                gameField[i - 1][j - 1] = "\uD83D\uDFE6";
+                                gameField[i - 1][j] = "\uD83D\uDFE6";
+                                gameField[i - 1][j + 1] = "\uD83D\uDFE6";
+                            } else if (gameField[i][j].equals("\uD83D\uDEE5") && i == 9 && j != 0 && j < 9) {
+                                gameField[i][j + 1] = "\uD83D\uDFE6";
+                                gameField[i][j - 1] = "\uD83D\uDFE6";
+                                gameField[i - 1][j - 1] = "\uD83D\uDFE6";
+                                gameField[i - 1][j] = "\uD83D\uDFE6";
+                                gameField[i - 1][j + 1] = "\uD83D\uDFE6";
+                            } else if (gameField[i][0].equals("\uD83D\uDEE5") && i > 0 && i < 9) {
+                                gameField[i][1] = "\uD83D\uDFE6";
+                                gameField[i + 1][0] = "\uD83D\uDFE6";
+                                gameField[i + 1][1] = "\uD83D\uDFE6";
+                                gameField[i - 1][0] = "\uD83D\uDFE6";
+                                gameField[i - 1][1] = "\uD83D\uDFE6";
+                            } else if (gameField[i][j].equals("\uD83D\uDEE5") && j == 9 && i != 0 && i < 9) {
+                                gameField[i][j - 1] = "\uD83D\uDFE6";
+                                gameField[i + 1][j - 1] = "\uD83D\uDFE6";
+                                gameField[i + 1][j] = "\uD83D\uDFE6";
+                                gameField[i - 1][j - 1] = "\uD83D\uDFE6";
+                                gameField[i - 1][j] = "\uD83D\uDFE6";
+                            }
                         }
                     }
                 }
-
                 printFilled(gameField);
 
             } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
@@ -252,8 +248,6 @@ public class Ships extends GameField {
                 gameField[check[0]][check[3]] = "\uD83D\uDEE5";
                 gameField[check[1]][check[4]] = "\uD83D\uDEE5";
                 gameField[check[2]][check[5]] = "\uD83D\uDEE5";
-
-                printFilled(gameField);
 
                 if (check[0] == 0 && check[3] == 0 && check[1] == 1 && check[4] == 1 && check[2] == 2 && check[5] == 2) {
                     gameField[check[0]][check[3]] = " ⬜";
@@ -497,21 +491,13 @@ public class Ships extends GameField {
                     gameField[7][8] = "\uD83D\uDFE6";
                     gameField[9][8] = "\uD83D\uDFE6";
                 } else if (gameField[0][j].equals("\uD83D\uDEE5") && gameField[0][j + 1].equals("\uD83D\uDEE5")
-                        && j < 9) {
+                        && j < 8) {
                     gameField[0][j + 2] = "\uD83D\uDFE6";
                     gameField[0][j - 1] = "\uD83D\uDFE6";
                     gameField[1][j] = "\uD83D\uDFE6";
                     gameField[1][j + 1] = "\uD83D\uDFE6";
                     gameField[1][j + 2] = "\uD83D\uDFE6";
                     gameField[1][j - 1] = "\uD83D\uDFE6";
-                } else if (gameField[i][9].equals("\uD83D\uDEE5") && i < 9) {
-                    gameField[i][8] = "\uD83D\uDFE6";
-                    gameField[i + 1][8] = "\uD83D\uDFE6";
-                    gameField[i + 2][8] = "\uD83D\uDFE6";
-                    gameField[i + 2][9] = "\uD83D\uDFE6";
-                    gameField[i - 1][8] = "\uD83D\uDFE6";
-                    gameField[i - 1][9] = "\uD83D\uDFE6";
-                    break;
                 } else if (gameField[i][j].equals("\uD83D\uDEE5") && gameField[i][j + 1].equals("\uD83D\uDEE5")
                         && i < 9 && j != 9) {
                     gameField[i][j + 2] = "\uD83D\uDFE6";
@@ -525,8 +511,16 @@ public class Ships extends GameField {
                     gameField[i + 1][j + 1] = "\uD83D\uDFE6";
                     gameField[i + 1][j + 2] = "\uD83D\uDFE6";
                     break;
-                } else if (gameField[9][j].equals("\uD83D\uDEE5") && gameField[9][j + 1].equals("\uD83D\uDEE5")
-                        && i == 9 && j < 9) {
+                } else if (gameField[i][9].equals("\uD83D\uDEE5") && i < 9) {
+                    gameField[i][8] = "\uD83D\uDFE6";
+                    gameField[i + 1][8] = "\uD83D\uDFE6";
+                    gameField[i + 2][8] = "\uD83D\uDFE6";
+                    gameField[i + 2][9] = "\uD83D\uDFE6";
+                    gameField[i - 1][8] = "\uD83D\uDFE6";
+                    gameField[i - 1][9] = "\uD83D\uDFE6";
+                    break;
+                }  else if (gameField[9][j].equals("\uD83D\uDEE5") && gameField[9][j + 1].equals("\uD83D\uDEE5")
+                        && j < 9) {
                     gameField[9][j + 2] = "\uD83D\uDFE6";
                     gameField[9][j - 1] = "\uD83D\uDFE6";
                     gameField[8][j] = "\uD83D\uDFE6";
@@ -552,6 +546,23 @@ public class Ships extends GameField {
                     gameField[i + 2][1] = "\uD83D\uDFE6";
                     gameField[i - 1][0] = "\uD83D\uDFE6";
                     gameField[i - 1][1] = "\uD83D\uDFE6";
+                } else if (gameField[i][0].equals("\uD83D\uDEE5") && gameField[i][1].equals("\uD83D\uDEE5") && i < 9) {
+                    gameField[i - 1][0] = "\uD83D\uDFE6";
+                    gameField[i + 1][0] = "\uD83D\uDFE6";
+                    gameField[i + 1][1] = "\uD83D\uDFE6";
+                    gameField[i - 1][1] = "\uD83D\uDFE6";
+                    gameField[i][2] = "\uD83D\uDFE6";
+                    gameField[i - 1][2] = "\uD83D\uDFE6";
+                    gameField[i + 1][2] = "\uD83D\uDFE6";
+                } else if (gameField[i][j].equals("\uD83D\uDEE5") && gameField[i][j - 1].equals("\uD83D\uDEE5") && i < 9
+                        && j == 9) {
+                    gameField[i - 1][0] = "\uD83D\uDFE6";
+                    gameField[i + 1][0] = "\uD83D\uDFE6";
+                    gameField[i + 1][1] = "\uD83D\uDFE6";
+                    gameField[i - 1][1] = "\uD83D\uDFE6";
+                    gameField[i][2] = "\uD83D\uDFE6";
+                    gameField[i - 1][2] = "\uD83D\uDFE6";
+                    gameField[i + 1][2] = "\uD83D\uDFE6";
                 }
             }
         }

@@ -5,12 +5,16 @@ import java.util.Scanner;
 public class Ships extends GameField {
     // TODO The ship is placed on an empty space on the map
     public static void placeShips(String[][] battlefield) {
+        // 0,2 6,0 9,4 5,9
+        // 3,1;3,2 0,0;1,0 2,5;2,6
+        // 8,0;8,1;8,2  7,4;7,5;7,6
+        // 9,9;9,8;9,7;9,6
         filledField(battlefield);
         printFilled(battlefield);
-//        addDeckOne(battlefield);
-        addDeckTwo(battlefield); // 1,8;1,9
-        addDeckThree(battlefield); // 2,0;2,1 && 1,8;1,9
-        addDeckFourth(battlefield); // 2,0;2,1 && 1,8;1,9
+        addDeckOne(battlefield);
+        addDeckTwo(battlefield);
+        addDeckThree(battlefield);
+        addDeckFourth(battlefield);
     }
 
     public static void addDeckOne(String[][] gameField) {
@@ -302,7 +306,7 @@ public class Ships extends GameField {
                 }
 
 
-            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            } catch (NumberFormatException e) { // ArrayIndexOutOfBoundsException
                 gameField[check[0]][check[3]] = " ⬜";
                 gameField[check[1]][check[4]] = " ⬜";
                 gameField[check[2]][check[5]] = " ⬜";
@@ -459,7 +463,7 @@ public class Ships extends GameField {
         }
 
         for (int i = 1; i < gameField.length; i++) {
-            for (int j = 1; j < gameField.length; j++) {
+            for (int j = 1; j < 9; j++) {
                 if (gameField[0][9].equals("\uD83D\uDEE5") && gameField[1][9].equals("\uD83D\uDEE5")) {
                     gameField[0][8] = "\uD83D\uDFE6";
                     gameField[1][8] = "\uD83D\uDFE6";
@@ -490,14 +494,14 @@ public class Ships extends GameField {
                     gameField[8][8] = "\uD83D\uDFE6";
                     gameField[7][8] = "\uD83D\uDFE6";
                     gameField[9][8] = "\uD83D\uDFE6";
-                } else if (gameField[0][j].equals("\uD83D\uDEE5") && gameField[0][j + 1].equals("\uD83D\uDEE5")
-                        && j < 8) {
-                    gameField[0][j + 2] = "\uD83D\uDFE6";
-                    gameField[0][j - 1] = "\uD83D\uDFE6";
-                    gameField[1][j] = "\uD83D\uDFE6";
-                    gameField[1][j + 1] = "\uD83D\uDFE6";
-                    gameField[1][j + 2] = "\uD83D\uDFE6";
-                    gameField[1][j - 1] = "\uD83D\uDFE6";
+                } else if (gameField[i][0].equals("\uD83D\uDEE5") && gameField[i][1].equals("\uD83D\uDEE5") && i < 9) {
+                    gameField[i - 1][0] = "\uD83D\uDFE6";
+                    gameField[i + 1][0] = "\uD83D\uDFE6";
+                    gameField[i + 1][1] = "\uD83D\uDFE6";
+                    gameField[i - 1][1] = "\uD83D\uDFE6";
+                    gameField[i][2] = "\uD83D\uDFE6";
+                    gameField[i - 1][2] = "\uD83D\uDFE6";
+                    gameField[i + 1][2] = "\uD83D\uDFE6";
                 } else if (gameField[i][j].equals("\uD83D\uDEE5") && gameField[i][j + 1].equals("\uD83D\uDEE5")
                         && i < 9 && j != 9) {
                     gameField[i][j + 2] = "\uD83D\uDFE6";
@@ -511,7 +515,8 @@ public class Ships extends GameField {
                     gameField[i + 1][j + 1] = "\uD83D\uDFE6";
                     gameField[i + 1][j + 2] = "\uD83D\uDFE6";
                     break;
-                } else if (gameField[i][9].equals("\uD83D\uDEE5") && i < 9) {
+                } else if (gameField[i][9].equals("\uD83D\uDEE5") && gameField[i + 1][9].equals("\uD83D\uDEE5")
+                        && i < 9) {
                     gameField[i][8] = "\uD83D\uDFE6";
                     gameField[i + 1][8] = "\uD83D\uDFE6";
                     gameField[i + 2][8] = "\uD83D\uDFE6";
@@ -519,7 +524,7 @@ public class Ships extends GameField {
                     gameField[i - 1][8] = "\uD83D\uDFE6";
                     gameField[i - 1][9] = "\uD83D\uDFE6";
                     break;
-                }  else if (gameField[9][j].equals("\uD83D\uDEE5") && gameField[9][j + 1].equals("\uD83D\uDEE5")
+                } else if (gameField[9][j].equals("\uD83D\uDEE5") && gameField[9][j + 1].equals("\uD83D\uDEE5")
                         && j < 9) {
                     gameField[9][j + 2] = "\uD83D\uDFE6";
                     gameField[9][j - 1] = "\uD83D\uDFE6";
@@ -546,23 +551,14 @@ public class Ships extends GameField {
                     gameField[i + 2][1] = "\uD83D\uDFE6";
                     gameField[i - 1][0] = "\uD83D\uDFE6";
                     gameField[i - 1][1] = "\uD83D\uDFE6";
-                } else if (gameField[i][0].equals("\uD83D\uDEE5") && gameField[i][1].equals("\uD83D\uDEE5") && i < 9) {
-                    gameField[i - 1][0] = "\uD83D\uDFE6";
-                    gameField[i + 1][0] = "\uD83D\uDFE6";
-                    gameField[i + 1][1] = "\uD83D\uDFE6";
-                    gameField[i - 1][1] = "\uD83D\uDFE6";
-                    gameField[i][2] = "\uD83D\uDFE6";
-                    gameField[i - 1][2] = "\uD83D\uDFE6";
-                    gameField[i + 1][2] = "\uD83D\uDFE6";
-                } else if (gameField[i][j].equals("\uD83D\uDEE5") && gameField[i][j - 1].equals("\uD83D\uDEE5") && i < 9
-                        && j == 9) {
-                    gameField[i - 1][0] = "\uD83D\uDFE6";
-                    gameField[i + 1][0] = "\uD83D\uDFE6";
-                    gameField[i + 1][1] = "\uD83D\uDFE6";
-                    gameField[i - 1][1] = "\uD83D\uDFE6";
-                    gameField[i][2] = "\uD83D\uDFE6";
-                    gameField[i - 1][2] = "\uD83D\uDFE6";
-                    gameField[i + 1][2] = "\uD83D\uDFE6";
+                } else if (gameField[0][j].equals("\uD83D\uDEE5") && gameField[0][j + 1].equals("\uD83D\uDEE5")
+                        && j < 8) {
+                    gameField[0][j + 2] = "\uD83D\uDFE6";
+                    gameField[0][j - 1] = "\uD83D\uDFE6";
+                    gameField[1][j] = "\uD83D\uDFE6";
+                    gameField[1][j + 1] = "\uD83D\uDFE6";
+                    gameField[1][j + 2] = "\uD83D\uDFE6";
+                    gameField[1][j - 1] = "\uD83D\uDFE6";
                 }
             }
         }
@@ -638,22 +634,25 @@ public class Ships extends GameField {
                     gameField[1][j + 1] = "\uD83D\uDFE6";
                     gameField[1][j + 2] = "\uD83D\uDFE6";
                     gameField[1][j + 3] = "\uD83D\uDFE6";
-                } else if (gameField[i][j].equals("\uD83D\uDEE5") && gameField[i][j + 1].equals("\uD83D\uDEE5")
-                        && gameField[i][j + 2].equals("\uD83D\uDEE5") && i < 9 && j != 9) {
-                    gameField[i][j + 3] = "\uD83D\uDFE6";
-                    gameField[i][j - 1] = "\uD83D\uDFE6";
-                    gameField[i - 1][j] = "\uD83D\uDFE6";
-                    gameField[i - 1][j - 1] = "\uD83D\uDFE6";
-                    gameField[i - 1][j + 1] = "\uD83D\uDFE6";
-                    gameField[i - 1][j + 2] = "\uD83D\uDFE6";
-                    gameField[i - 1][j + 3] = "\uD83D\uDFE6";
-                    gameField[i + 1][j] = "\uD83D\uDFE6";
-                    gameField[i + 1][j - 1] = "\uD83D\uDFE6";
-                    gameField[i + 1][j + 1] = "\uD83D\uDFE6";
-                    gameField[i + 1][j + 2] = "\uD83D\uDFE6";
-                    gameField[i + 1][j + 3] = "\uD83D\uDFE6";
-                    break;
-                } else if (gameField[i][9].equals("\uD83D\uDEE5") && i < 9) {
+                } else if (i < 9 && j < 9){
+                    if (gameField[i][j].equals("\uD83D\uDEE5") && gameField[i][j + 1].equals("\uD83D\uDEE5")
+                            && gameField[i][j + 2].equals("\uD83D\uDEE5") ) {
+                        gameField[i][j + 3] = "\uD83D\uDFE6";
+                        gameField[i][j - 1] = "\uD83D\uDFE6";
+                        gameField[i - 1][j] = "\uD83D\uDFE6";
+                        gameField[i - 1][j - 1] = "\uD83D\uDFE6";
+                        gameField[i - 1][j + 1] = "\uD83D\uDFE6";
+                        gameField[i - 1][j + 2] = "\uD83D\uDFE6";
+                        gameField[i - 1][j + 3] = "\uD83D\uDFE6";
+                        gameField[i + 1][j] = "\uD83D\uDFE6";
+                        gameField[i + 1][j - 1] = "\uD83D\uDFE6";
+                        gameField[i + 1][j + 1] = "\uD83D\uDFE6";
+                        gameField[i + 1][j + 2] = "\uD83D\uDFE6";
+                        gameField[i + 1][j + 3] = "\uD83D\uDFE6";
+                        break;
+                    }
+                }  else if (gameField[i][9].equals("\uD83D\uDEE5") && gameField[i + 1][9].equals("\uD83D\uDEE5")
+                        && gameField[i + 2][9].equals("\uD83D\uDEE5") && i < 9) {
                     gameField[i][8] = "\uD83D\uDFE6";
                     gameField[i + 1][8] = "\uD83D\uDFE6";
                     gameField[i + 2][8] = "\uD83D\uDFE6";
@@ -696,6 +695,18 @@ public class Ships extends GameField {
                     gameField[i - 1][0] = "\uD83D\uDFE6";
                     gameField[i - 1][1] = "\uD83D\uDFE6";
                 }
+            }
+            if (gameField[i][0].equals("\uD83D\uDEE5") && gameField[i][1].equals("\uD83D\uDEE5")
+                    && gameField[i][2].equals("\uD83D\uDEE5") && i < 9) {
+                gameField[i - 1][0] = "\uD83D\uDFE6";
+                gameField[i + 1][0] = "\uD83D\uDFE6";
+                gameField[i + 1][1] = "\uD83D\uDFE6";
+                gameField[i - 1][1] = "\uD83D\uDFE6";
+                gameField[i - 1][2] = "\uD83D\uDFE6";
+                gameField[i + 1][2] = "\uD83D\uDFE6";
+                gameField[i][3] = "\uD83D\uDFE6";
+                gameField[i - 1][3] = "\uD83D\uDFE6";
+                gameField[i + 1][3] = "\uD83D\uDFE6";
             }
         }
     }
@@ -769,7 +780,9 @@ public class Ships extends GameField {
                     gameField[9][8] = "\uD83D\uDFE6";
                     gameField[6][8] = "\uD83D\uDFE6";
                     gameField[5][8] = "\uD83D\uDFE6";
-                } else if (gameField[i][9].equals("\uD83D\uDEE5") && i < 9) {
+                } else if (gameField[i][9].equals("\uD83D\uDEE5") && gameField[i + 1][9].equals("\uD83D\uDEE5")
+                        && gameField[i + 2][9].equals("\uD83D\uDEE5") && gameField[i + 3][9].equals("\uD83D\uDEE5")
+                        && i < 9) {
                     gameField[i][8] = "\uD83D\uDFE6";
                     gameField[i + 1][8] = "\uD83D\uDFE6";
                     gameField[i + 2][8] = "\uD83D\uDFE6";
@@ -848,6 +861,20 @@ public class Ships extends GameField {
                     gameField[i + 4][1] = "\uD83D\uDFE6";
                     gameField[i - 1][0] = "\uD83D\uDFE6";
                     gameField[i - 1][1] = "\uD83D\uDFE6";
+                } else if (gameField[i][0].equals("\uD83D\uDEE5") && gameField[i][1].equals("\uD83D\uDEE5")
+                        && gameField[i][2].equals("\uD83D\uDEE5") && gameField[i][3].equals("\uD83D\uDEE5") && i < 9) {
+                    gameField[i - 1][0] = "\uD83D\uDFE6";
+                    gameField[i + 1][0] = "\uD83D\uDFE6";
+                    gameField[i + 1][1] = "\uD83D\uDFE6";
+                    gameField[i - 1][1] = "\uD83D\uDFE6";
+                    gameField[i - 1][2] = "\uD83D\uDFE6";
+                    gameField[i + 1][2] = "\uD83D\uDFE6";
+                    gameField[i - 1][3] = "\uD83D\uDFE6";
+                    gameField[i + 1][3] = "\uD83D\uDFE6";
+                    gameField[i][4] = "\uD83D\uDFE6";
+                    gameField[i - 1][4] = "\uD83D\uDFE6";
+                    gameField[i + 1][4] = "\uD83D\uDFE6";
+
                 }
             }
         }

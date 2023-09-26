@@ -24,6 +24,7 @@ public class Battleship {
 
         Ships.placeShips(battlefield2);
 
+        // TODO Attack and end of the game
         System.out.println("Our battlefields");
         GameField.printFilled(battlefield1);
         GameField.printFilled(battlefield2);

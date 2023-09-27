@@ -28,12 +28,5 @@ public class Battleship {
         System.out.println("Our battlefields");
         GameField.printFilled(battlefield1);
         GameField.printFilled(battlefield2);
-//        GameField.printFilled();
-//        Ships.addDeckFourth();
-//        Ships.addDeckThree();
-//        Ships.addDeckTwo();
-//        Ships.addDeckOne();
-
-//        GameField.printFilled();
     }
 }

@@ -11,10 +11,11 @@ public class Ships extends GameField {
         filledField(battlefield);
         printFilled(battlefield);
         addDeckOne(battlefield);
-        addDeckTwo(battlefield);
-        addDeckThree(battlefield);
-        addDeckFourth(battlefield);
+//        addDeckTwo(battlefield);
+//        addDeckThree(battlefield);
+//        addDeckFourth(battlefield);
     }
+
 
     public static void addDeckOne(String[][] gameField) {
         Scanner scanner = new Scanner(System.in);
@@ -35,12 +36,12 @@ public class Ships extends GameField {
                 x = Integer.parseInt(decks[0]);
                 y = Integer.parseInt(decks[1]);
 
-                if (gameField[x][y].equals("\uD83D\uDFE6") || gameField[x][y].equals("\uD83D\uDEE5")) {
-                    throw new IllegalArgumentException();
-                }
-
                 if (x > 9 && y > 9) {
                     throw new ArrayIndexOutOfBoundsException();
+                }
+
+                if (gameField[x][y].equals("\uD83D\uDFE6") || gameField[x][y].equals("\uD83D\uDEE5")) {
+                    throw new IllegalArgumentException();
                 }
 
                 gameField[x][y] = "\uD83D\uDEE5";
@@ -106,7 +107,7 @@ public class Ships extends GameField {
                 }
                 printFilled(gameField);
 
-            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            } catch (NumberFormatException e) {
                 gameField[x][y] = " ⬜";
                 counter--;
                 System.out.println("Смотри формат ввода координат! (Формат: x,y)");
@@ -114,6 +115,9 @@ public class Ships extends GameField {
                 counter--;
                 System.out.println("Вокруг корабля должна быть область шириной в одну клетку, " +
                         "в которой не может быть других кораблей (ореол корабля)");
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Смотри формат ввода координат! (Формат: x,y)");
+                counter--;
             }
         }
     }
@@ -209,6 +213,8 @@ public class Ships extends GameField {
                     ArithmeticException e) {
                 counter--;
                 System.out.println("несколько координат, разбросанных по карте - это невалидный корабль.");
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Смотри формат ввода координат! (Формат: x,y)");
             }
         }
     }
@@ -303,7 +309,7 @@ public class Ships extends GameField {
                 }
 
 
-            } catch (NumberFormatException e) { // ArrayIndexOutOfBoundsException
+            } catch (NumberFormatException e) {
                 gameField[check[0]][check[3]] = " ⬜";
                 gameField[check[1]][check[4]] = " ⬜";
                 gameField[check[2]][check[5]] = " ⬜";
@@ -317,6 +323,12 @@ public class Ships extends GameField {
             } catch (ArithmeticException e) {
                 counter--;
                 System.out.println("несколько координат, разбросанных по карте - это невалидный корабль.");
+            } catch (ArrayIndexOutOfBoundsException e) {
+                gameField[check[0]][check[3]] = " ⬜";
+                gameField[check[1]][check[4]] = " ⬜";
+                gameField[check[2]][check[5]] = " ⬜";
+                counter--;
+                System.out.println("Смотри формат ввода координат! (Формат: x,y)");
             }
         }
     }
@@ -425,7 +437,7 @@ public class Ships extends GameField {
                     throw new ArithmeticException();
                 }
 
-            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            } catch (NumberFormatException e) {
                 gameField[check[0]][check[4]] = " ⬜";
                 gameField[check[1]][check[5]] = " ⬜";
                 gameField[check[2]][check[6]] = " ⬜";
@@ -440,6 +452,8 @@ public class Ships extends GameField {
             } catch (ArithmeticException e) {
                 counter--;
                 System.out.println("несколько координат, разбросанных по карте - это невалидный корабль.");
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Смотри формат ввода координат! (Формат: x,y)");
             }
         }
     }

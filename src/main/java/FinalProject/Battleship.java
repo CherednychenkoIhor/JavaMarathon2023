@@ -27,10 +27,8 @@ public class Battleship {
 
         Ships.placeShips(battlefield1);
 
-//        System.out.print("\033[H\033[J"); clear console!!!
-//        System.out.print("\033[H\033[2J");
-//        System.out.flush();
-//        Runtime.getRuntime().exec("cls");
+        GameField.clearScreen(); // for windows cmd
+
         for (int i = 0; i < 50; ++i) System.out.println();
 
         System.out.print("Введите имя второго игрока: ");
@@ -39,7 +37,7 @@ public class Battleship {
 
         Ships.placeShips(battlefield2);
 
-//        System.out.println("Начнем расставлять корабли на поле " + player2.getName() + ". Другой игрок, не смотри!");
+        System.out.println("Начнем расставлять корабли на поле " + player2 + ". Другой игрок, не смотри!");
         while (true) {
             makeTurn(player2, battle1, battlefield1);
             if (isWin())
@@ -48,18 +46,13 @@ public class Battleship {
             if (isWin())
                 break;
         }
-
-        // TODO Attack and end of the game
-//        System.out.println("Our battlefields");
-//        GameField.printFilled(battlefield1);
-//        GameField.printFilled(battlefield2);
-
     }
 
     public static void makeTurn(String playerName, String[][] battle, String[][] battlefield) {
+        for (int i = 0; i < 50; ++i) System.out.println();
+
         GameField.filledField(battle);
         GameField.printFilled(battle);
-//        System.out.println("\uD83D\uDFE5");  // 🟥
 
         Scanner scanner = new Scanner(System.in);
         int x;
@@ -86,7 +79,7 @@ public class Battleship {
                     battle[x][y] = "\uD83D\uDFE5";
                     GameField.printFilled(battle);
                     countShips++;
-                    if (countShips == 4)
+                    if (countShips == 20)
                         break;
                     System.out.println("Попадание! Сделай свой ход снова (Формат: x,y)");
                 } else {
@@ -121,17 +114,20 @@ public class Battleship {
             }
         }
 
-        if (counter1 == 4) {
+        if (counter1 == 20) {
             System.out.println(player1 + " уничтожил все корабли противника!!!");
             return true;
         }
-        if (counter2 == 4) {
+        if (counter2 == 20) {
             System.out.println(player2 + " уничтожил все корабли противника!!!");
             return true;
         }
         return false;
     }
+
+
 }
+// exception for full destroyed ship
 //if (x < 9 && y < 9 && x > 0 && y > 0) {
 //                        if (battlefield[x][y].equals("\uD83D\uDEE5") && !battlefield[x][y + 1].equals("\uD83D\uDEE5")
 //                                || battlefield[x][y].equals("\uD83D\uDEE5") && !battlefield[x + 1][y].equals("\uD83D\uDEE5")

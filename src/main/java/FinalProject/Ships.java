@@ -4,18 +4,18 @@ import java.util.Scanner;
 
 public class Ships extends GameField {
     public static void placeShips(String[][] battlefield) {
-        // 0,2 6,0 9,4 5,9
-        // 3,1;3,2 0,0;1,0 2,5;2,6
-        // 8,0;8,1;8,2  7,4;7,5;7,6
-        // 9,9;9,8;9,7;9,6
+        // example
+        // 0,2 6,0 9,4 5,9 for one deck
+        // 3,1;3,2 0,0;1,0 2,5;2,6 for two deck
+        // 8,0;8,1;8,2  7,4;7,5;7,6 for three deck
+        // 9,9;9,8;9,7;9,6 for four deck
         filledField(battlefield);
         printFilled(battlefield);
         addDeckOne(battlefield);
-//        addDeckTwo(battlefield);
-//        addDeckThree(battlefield);
-//        addDeckFourth(battlefield);
+        addDeckTwo(battlefield); // third deck error
+        addDeckThree(battlefield);
+        addDeckFourth(battlefield);
     }
-
 
     public static void addDeckOne(String[][] gameField) {
         Scanner scanner = new Scanner(System.in);

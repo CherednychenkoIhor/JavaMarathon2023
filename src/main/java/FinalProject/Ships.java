@@ -146,7 +146,6 @@ public class Ships extends GameField {
                     y = Integer.parseInt(deckTwo[1]);
                     check[i] += x;
                     check[i + 2] += y;
-
                 }
 
                 if (gameField[check[0]][check[2]].equals("\uD83D\uDFE6") || gameField[check[0]][check[2]].equals(" \uD83D\uDEE5") ||
